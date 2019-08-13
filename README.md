@@ -49,3 +49,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Verbos: manipulação dos recursos: GET /alunos POST /alunos PUT /alunos{id} 
 * Representação dos recursos : media type : XML, JSON
 * Stateless: não guarda sessão - não armazena dados dos usuários p/ que o protocolo tenha escalabilidade
+
+## Padrão Repository
+
+* Substitui o padrão ADO. Não prcisa criar métodos CRUD isolados em classes xxxxADO
+* criar uma interface que extender JpaRepository<T,> e injetar na classe q vc quer usar

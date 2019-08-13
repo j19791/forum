@@ -33,11 +33,9 @@ public class Topico {
 	@OneToMany(mappedBy = "topico")
 	private List<Resposta> respostas = new ArrayList<>();
 
-	public Topico(String titulo, String mensagem, Curso curso) {
-		this.titulo = titulo;
-		this.mensagem = mensagem;
-		this.curso = curso;
-	}
+	//Não precisa mais de construtor com parametros (utilizado apenas para marretar o topico no codigo
+	
+	//Spring Data precisa do contrutor padrão p/ utilizar o Repository
 
 	@Override
 	public int hashCode() {
