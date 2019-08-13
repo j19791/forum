@@ -18,11 +18,21 @@ public class TopicosController {
 	private TopicoRepository topicoRepository;
 	
 	@RequestMapping("/topicos") ////Endpoint p/ carregar uma lista de todos os topicos	
-	public List<TopicoDTO> lista(){ //padrão DTO: nao retorna todos os atributos da entidade JPA
+	public List<TopicoDTO> lista(String nomeCurso){ //padrão DTO: nao retorna todos os atributos da entidade JPA
 		
 		//Topico topico = new Topico("Dúvida", "Dúvida com Spring", new Curso("Spring", "Programação"));
 		
-		List<Topico> topicos = topicoRepository.findAll();
+		List<Topico> topicos;
+		
+		if(nomeCurso == null) {
+			topicos = topicoRepository.findAll();
+			
+		}
+		else {//filtrando com valor passado por parametro na url. Nesse caso, pelo nome do curso: Curso.nome
+			topicos = topicoRepository.findByCurso_Nome(nomeCurso);
+			
+		}
+		
 		
 		return TopicoDTO.converter(topicos);
 		

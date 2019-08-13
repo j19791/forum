@@ -16,10 +16,9 @@ public class Curso {
 	private String nome;
 	private String categoria;
 
-	public Curso(String nome, String categoria) {
-		this.nome = nome;
-		this.categoria = categoria;
-	}
+	//Não precisa mais de construtor com parametros (utilizado apenas para marretar o topico no codigo
+	
+		//Spring Data precisa do contrutor padrão p/ utilizar o Repository
 	
 	@Override
 	public int hashCode() {

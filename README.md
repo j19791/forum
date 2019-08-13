@@ -3,24 +3,16 @@ Projeto do curso Spring Boot Parte 1: Contrua uma API Rest
 
 ## Passos para a criação do projeto
 
-[Gerador do Projeto - Spring Initializer](https://start.spring.io/)
+* [Gerador do Projeto - Spring Initializer](https://start.spring.io/)
 Project: Maven Project
-
-Language Java
-
-Versão 2.1.6
-
-Group: br.com.alura
-
-Artifact: forum
-
-Dependencies: Web
-
-Generate Project (zip)
-
-Descompactar zip
-
-Eclipse: Import / Existing Maven Projects
+* Language Java
+* Versão 2.1.6
+* Group: br.com.alura
+* Artifact: forum
+* Dependencies: Web
+* Generate Project (zip)
+* Descompactar zip
+* Eclipse: Import / Existing Maven Projects
 
 
 ## Para rodar o projeto
@@ -54,3 +46,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 
 * Substitui o padrão ADO. Não prcisa criar métodos CRUD isolados em classes xxxxADO
 * criar uma interface que extender JpaRepository<T,> e injetar na classe q vc quer usar
+
+## Passando filtros
+* com Spring Data, utilizar o padrão de nomeclatura findByAtributo(Tipo atributo) como metodo na interface Repository que o Spring ja criar o JPQL necessário p/ filtrar
+* na url, filtrar com http://localhost:8080/topicos?nomeCurso=Spring+Boot
+* se o valor possui espaço em branco, utilizar + no lugar do espaço
