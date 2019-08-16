@@ -48,3 +48,7 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Para trabalhar com JPA, utilizar sempre construtor padrão. Mas você pode criar novos construtores de necessário.
 * Utilizar @PostMapping no lugar de @RequestMapping - que agora será anotada na classe
 * Utilizar @RequestBody nos parametros do metodo cadastrar para indicar ao Spring que os dados estão vindo do corpo da requisição
+
+##Códigos HTTP
+* 200 - OK genérico
+* 201 - OK: novo recurso criado com sucesso no servidor. Retornar URI e representação criada.
