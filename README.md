@@ -52,3 +52,9 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ##Códigos HTTP
 * 200 - OK genérico
 * 201 - OK: novo recurso criado com sucesso no servidor. Retornar URI e representação criada.
+
+## Postman
+* Navegador só dispara GET para o servidor na barra de endereços
+* Para testar POST : utilizar o app POSTMAN do Chrome
+![Post](https://github.com/j19791/forum/raw/master/Postman.jpg)
+ 
