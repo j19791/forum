@@ -57,4 +57,13 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Navegador só dispara GET para o servidor na barra de endereços
 * Para testar POST : utilizar o app POSTMAN do Chrome
 ![Post](https://github.com/j19791/forum/raw/master/Postman.jpg)
- 
+
+
+## Bean Validation
+* Especificação p/ validar requests
+* Incluir Nos atributos da classe que se deseja validar
+* @NotNull
+* @NotEmpty
+* @Length(min=5)
+* @Valid : No método do controller que recebe a requisição, colocar a anotação no parametro para que o Spring seja chamado e utilize o bean Validation de acordo com as anotações dos atributos  
+* 400 - Bad Request - requisição invalida - dados não validados 
