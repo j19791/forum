@@ -67,3 +67,7 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * @Length(min=5)
 * @Valid : No método do controller que recebe a requisição, colocar a anotação no parametro para que o Spring seja chamado e utilize o bean Validation de acordo com as anotações dos atributos  
 * 400 - Bad Request - requisição invalida - dados não validados 
+
+## Detalhes dos topicos
+* GetMapping("{/id}")  passando registro especifico do q uma lista inteira
+* @PathVariable : o id vem da url do request e passado como parametro do metodo do controlador. 
