@@ -72,7 +72,10 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * GetMapping("{/id}")  passando registro especifico do q uma lista inteira
 * @PathVariable : o id vem da url do request e passado como parametro do metodo do controlador.
 
-## Atualizando Dados
+## Atualizando Recursos
 * @PutMapping("/{id}")
 * Utilizar classe DTO especifica p/ o form com os campos q são permitidos alteração
  
+## Excluindo recursos
+* @DeleteMapping("/{id}")
+* Não deverá retornar o recurso excluido, apenas o 200.
