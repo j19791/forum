@@ -52,6 +52,7 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ##Códigos HTTP
 * 200 - OK genérico
 * 201 - OK: novo recurso criado com sucesso no servidor. Retornar URI e representação criada.
+* 404 - Not found
 
 ## Postman
 * Navegador só dispara GET para o servidor na barra de endereços

@@ -2,6 +2,7 @@ package br.com.alura.forum.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -81,16 +82,21 @@ public class TopicosController {
 	
 	
 	@GetMapping("/{id}") //o id na url passada no request é dinamico
-	public DetalhesDoTopicoDTO detalhes(@PathVariable //vem da url 
+	public ResponseEntity<DetalhesDoTopicoDTO> detalhes(@PathVariable //vem da url 
 										Long id) {
 		
-		Topico topico = topicoRepository.getOne(id);
+		//getOne retorna exceção 
+		//Topico topico = topicoRepository.getOne(id);
 		
+		//se não encontrar, não retornar excption 
+		Optional<Topico> topico = topicoRepository.findById(id);
 		
-		
-		
-		return new DetalhesDoTopicoDTO(topico);
-				
+		if(topico.isPresent()) {//se existe o recurso buscado
+			
+			return  ResponseEntity.ok(new DetalhesDoTopicoDTO(topico.get())); 
+			
+		}			
+		return ResponseEntity.notFound().build(); //retorna 404		
 		
 	}
 	
@@ -100,20 +106,29 @@ public class TopicosController {
 	@PutMapping("/{id}")
 	public ResponseEntity<TopicoDTO> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizaTopicoForm form){
 		
+		Optional<Topico> topico = topicoRepository.findById(id);
 		
-		Topico topico = form.atualizar(id, topicoRepository);
+		if(topico.isPresent()) {//se existe o recurso buscado
+			Topico topicoAtualizado = form.atualizar(id, topicoRepository);
 		
-		return ResponseEntity.ok(new TopicoDTO(topico)); //corpo no response	
+			return ResponseEntity.ok(new TopicoDTO(topicoAtualizado)); //corpo no response
+		}
+		
+		return ResponseEntity.notFound().build();	
 	}
 	
 	@Transactional
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		
+		Optional<Topico> topico = topicoRepository.findById(id);
 		
-		topicoRepository.deleteById(id);
+		if(topico.isPresent()) {//se existe o recurso buscado
+				topicoRepository.deleteById(id);
+				return ResponseEntity.ok().build(); //volta apenas 200 pois o rescurso foi excluido
+		}
 		
-		return ResponseEntity.ok().build(); //volta apenas 200 pois o rescurso foi excluido
+		return ResponseEntity.notFound().build();	
 		
 	}
 	
