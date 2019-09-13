@@ -7,6 +7,9 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -39,18 +43,25 @@ public class TopicosController {
 	private CursoRepository cursoRepository;
 	
 	@GetMapping //dados serão recebidos utilizando o metodo GET do HTTP 
-	public List<TopicoDTO> lista(String nomeCurso){ //padrão DTO: nao retorna todos os atributos da entidade JPA
+	public Page<TopicoDTO> lista(//padrão DTO: nao retorna todos os atributos da entidade JPA
+			@RequestParam(required = false) String nomeCurso, //parametro nao obrigatorio 
+			@RequestParam int pagina, //parametro obrigatorio. Se nao passar na url o valor: Erro 400, Bad request
+			@RequestParam int qtd){ //parametro obrigatorio. Se nao passar na url o valor: Erro 400, Bad request
 		
-		//Topico topico = new Topico("Dúvida", "Dúvida com Spring", new Curso("Spring", "Programação"));
 		
-		List<Topico> topicos;
+		Pageable paginacao //Interface de paginação de resultados de uma response utilizando SpringData 
+			= PageRequest.of(pagina, qtd); 
+		
+		
+		Page<Topico> topicos; //Page retorna os topicos e mais informações de paginação (numero de paginas, página atual, etc)
 		
 		if(nomeCurso == null) {
-			topicos = topicoRepository.findAll();
+			topicos 
+			= topicoRepository.findAll(paginacao); //Spring sabe agora que vc quer fazer paginacao com o resultado do findAll
 			
 		}
 		else {//filtrando com valor passado por parametro na url. Nesse caso, pelo nome do curso: Curso.nome
-			topicos = topicoRepository.findByCurso_Nome(nomeCurso);
+			topicos = topicoRepository.findByCurso_Nome(nomeCurso, paginacao);//Spring sabe agora que vc quer fazer paginacao com o resultado do findByCurso_Nome
 			
 		}
 		

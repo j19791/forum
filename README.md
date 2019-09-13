@@ -49,10 +49,11 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Utilizar @PostMapping no lugar de @RequestMapping - que agora será anotada na classe
 * Utilizar @RequestBody nos parametros do metodo cadastrar para indicar ao Spring que os dados estão vindo do corpo da requisição
 
-##Códigos HTTP
+## Códigos HTTP
 * 200 - OK genérico
 * 201 - OK: novo recurso criado com sucesso no servidor. Retornar URI e representação criada.
 * 404 - Not found
+* 400 - Bad Request: na URI,não passado valores para todos os parametros obrigatórios, por exemplo.
 
 ## Postman
 * Navegador só dispara GET para o servidor na barra de endereços
@@ -67,7 +68,6 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * @NotEmpty
 * @Length(min=5)
 * @Valid : No método do controller que recebe a requisição, colocar a anotação no parametro para que o Spring seja chamado e utilize o bean Validation de acordo com as anotações dos atributos  
-* 400 - Bad Request - requisição invalida - dados não validados 
 
 ## Detalhes dos topicos
 * GetMapping("{/id}")  passando registro especifico do q uma lista inteira
@@ -80,3 +80,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ## Excluindo recursos
 * @DeleteMapping("/{id}")
 * Não deverá retornar o recurso excluido, apenas o 200.
+
+## Paginação
+* Pageable: realiza paginação dos resultados com Spring Data JPA
+* métodos que recebem um pageable como parâmetro retornam objetos do tipo Page<>, ao invés de List<>
+* http://localhost:8080/topicos?pagina=0&qtd=1 Exemplo de consulta com paginação (começa do zero)
