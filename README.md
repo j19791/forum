@@ -81,7 +81,15 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * @DeleteMapping("/{id}")
 * Não deverá retornar o recurso excluido, apenas o 200.
 
-## Paginação
+## Paginação e Ordenação
 * Pageable: realiza paginação dos resultados com Spring Data JPA
 * métodos que recebem um pageable como parâmetro retornam objetos do tipo Page<>, ao invés de List<>
 * http://localhost:8080/topicos?pagina=0&qtd=1 Exemplo de consulta com paginação (começa do zero)
+* PageRequest.of(pagina, qtd, Direction, ordenacao)
+* Direction pode ser ASC, DESC
+* ordenacao: campo da tabela usado como critério de ordenação. Default é a pk por ordem crescente.  
+* lista(...,Pageable paginacao) : Não precisa criar parametros no metodo do controller de listagem. Utilizando os critérios do próprio Spring
+* @EnableSpringDataWebSupport : habilita a passagem de parametros de ordenação/paginacao pela URL utilizando os criterios do Spring
+* http://localhost:8080/topicos?page=0&size=3&sort=mensagem,desc&sort=dataCriacao,desc
+* page, size, sort na URI devem ser utilizados para ordenação utilizando @EnableSpringDataWebSupport
+* @PageableDefault(sort="id", direction = Direction.DESC, page=0, size=10) Pageable paginacao. Utilizando valores padrão de paginação e ordenação. O sort é acumulativo.
