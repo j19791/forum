@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -42,6 +43,7 @@ public class TopicosController {
 	@Autowired
 	private CursoRepository cursoRepository;
 	
+	@Cacheable(value="listaDeTopicos") //o resultado do método é cacheavel e esse cache se chama listaDeTopicos (id p/ diferenciar de outros caches.
 	@GetMapping //dados serão recebidos utilizando o metodo GET do HTTP 
 	public Page<TopicoDTO> lista(//padrão DTO: nao retorna todos os atributos da entidade JPA
 			@RequestParam(required = false) String nomeCurso, //parametro nao obrigatorio 

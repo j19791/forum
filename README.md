@@ -93,3 +93,15 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * http://localhost:8080/topicos?page=0&size=3&sort=mensagem,desc&sort=dataCriacao,desc
 * page, size, sort na URI devem ser utilizados para ordenação utilizando @EnableSpringDataWebSupport
 * @PageableDefault(sort="id", direction = Direction.DESC, page=0, size=10) Pageable paginacao. Utilizando valores padrão de paginação e ordenação. O sort é acumulativo.
+
+## Log do Hibernate
+* application.properties: 
+* habilita o log de consulta de banco de dados: spring.jpa.properties.hibernate.show_sql = true
+* formata as consultas: spring.jpa.properties.hibernate.format_sql = true
+
+## Cache
+* dependencia spring-boot-starter-cache
+* @EnableCaching: habilita o cache na aplicação
+* @Cacheable(value="listaDeTopicos") : o resultado do método é cacheavel e esse cache se chama listaDeTopicos (id p/ diferenciar de outros caches)
+
+

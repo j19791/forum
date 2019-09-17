@@ -40,6 +40,12 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency><!-- dependencia do cache. Provedor do cache sendo utilizado é o usado por default pelo Spring. Em produção, utilizar um provedor melhor -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
 		<dependency> <!-- Evitar a necessidade de reiniciar o servidor manualmente a cada mudança no código da aplicação -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
