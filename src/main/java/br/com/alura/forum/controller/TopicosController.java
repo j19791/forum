@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -67,6 +68,7 @@ public class TopicosController {
 		
 	}
 	
+	@CacheEvict(value="listaDeTopicos", allEntries = true) //invalida o cache listaDeTopicos p/ manter todos os dados do cache atualizados depois de cadastrar novo tópico, excluir ou atualizar 
 	@PostMapping
 	public ResponseEntity<TopicoDTO> cadastrar(@RequestBody 
 			@Valid //avisa o spring p/ utilizar a especificação Bean Validation e as anotações dos atributos da classe TopicoForm 
@@ -108,7 +110,7 @@ public class TopicosController {
 	}
 	
 	
-	
+	@CacheEvict(value="listaDeTopicos", allEntries = true)
 	@Transactional //spring faz commit no bd
 	@PutMapping("/{id}")
 	public ResponseEntity<TopicoDTO> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizaTopicoForm form){
@@ -124,6 +126,7 @@ public class TopicosController {
 		return ResponseEntity.notFound().build();	
 	}
 	
+	@CacheEvict(value="listaDeTopicos", allEntries = true)
 	@Transactional
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){

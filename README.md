@@ -101,7 +101,9 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 
 ## Cache
 * dependencia spring-boot-starter-cache
+* Melhora a perfomance. Aplicação consulta a memória e não o bd (mais custoso)
 * @EnableCaching: habilita o cache na aplicação
 * @Cacheable(value="listaDeTopicos") : o resultado do método é cacheavel e esse cache se chama listaDeTopicos (id p/ diferenciar de outros caches)
-
+* @CacheEvict(value="listaDeTopicos", allEntries = true)  : invalida o cache qdo o método é chamado. Utilizar nos métodos de exclusão e atualização p/ masnter o cache atualizado.
+* Política do cache: utilizar em tabelas raramente atualizadas. 
 
