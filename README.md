@@ -107,3 +107,6 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * @CacheEvict(value="listaDeTopicos", allEntries = true)  : invalida o cache qdo o método é chamado. Utilizar nos métodos de exclusão e atualização p/ masnter o cache atualizado.
 * Política do cache: utilizar em tabelas raramente atualizadas. 
 
+
+
+
