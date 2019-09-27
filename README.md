@@ -58,7 +58,7 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ## Postman
 * Navegador só dispara GET para o servidor na barra de endereços
 * Para testar POST : utilizar o app POSTMAN do Chrome
-![Post](https://github.com/j19791/forum/raw/master/Postman.jpg)
+* (https://i.imgur.com/QKA14q2.jpg)
 
 
 ## Bean Validation
@@ -106,6 +106,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * @Cacheable(value="listaDeTopicos") : o resultado do método é cacheavel e esse cache se chama listaDeTopicos (id p/ diferenciar de outros caches)
 * @CacheEvict(value="listaDeTopicos", allEntries = true)  : invalida o cache qdo o método é chamado. Utilizar nos métodos de exclusão e atualização p/ masnter o cache atualizado.
 * Política do cache: utilizar em tabelas raramente atualizadas. 
+
+## Segurança
 
 
 
