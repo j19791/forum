@@ -17,4 +17,24 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 
 	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {//configura a autenticação (login)
+		// TODO Auto-generated method stub
+		super.configure(auth);
+	}
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {//autorização: configura o que é público e o que precisa de controle de acesso
+			
+		//end points públicos: get da lista de tópicos e dos detalhes de um tópico
+		http.authorizeRequests()
+			.antMatchers(HttpMethod.GET, "/topicos").permitAll()
+			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll();
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {//configurações de segurança dos recursos estáticos
+
+	}
+	
 }
