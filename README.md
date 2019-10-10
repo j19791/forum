@@ -59,7 +59,7 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ## Postman
 * Navegador só dispara GET para o servidor na barra de endereços
 * Para testar POST : utilizar o app POSTMAN do Chrome
-* ![Post][Imgur](https://i.imgur.com/QKA14q2.jpg)
+![Post][Imgur](https://i.imgur.com/QKA14q2.jpg)
 
 
 ## Bean Validation
