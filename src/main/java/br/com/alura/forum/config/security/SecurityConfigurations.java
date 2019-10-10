@@ -29,7 +29,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		//end points públicos: get da lista de tópicos e dos detalhes de um tópico
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.GET, "/topicos").permitAll()
-			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll();
+			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
+			.anyRequest().authenticated() //restrição (requer autenticação)
+			.and().formLogin(); //formulario de login fornecido pelo Spring
 	}
 	
 	@Override
