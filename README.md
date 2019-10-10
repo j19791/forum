@@ -109,10 +109,6 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Política do cache: utilizar em tabelas raramente atualizadas. 
 
 ## Segurança
-* @EnableWebSecurity : habilita nessa aplicação o módulo (classe) de segurança - default - tudo bloqueado
-* @Configuration: Spring configura a aplicação no startup a partir das definições nessas classes
-* Autenticação: tela de login p/ habilitar ou bloquer o a acesso a endpoints (controle de acesso)
-* Autorização: é a configuração da habilitação/bloqueio de endpoints.
 
 
 
