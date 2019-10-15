@@ -54,7 +54,6 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * 201 - OK: novo recurso criado com sucesso no servidor. Retornar URI e representação criada.
 * 404 - Not found
 * 400 - Bad Request: na URI,não passado valores para todos os parametros obrigatórios, por exemplo.
-* 403 - Forbidden: sem autorização p/ acessar o endpoint
 
 ## Postman
 * Navegador só dispara GET para o servidor na barra de endereços
