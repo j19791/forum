@@ -109,6 +109,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Política do cache: utilizar em tabelas raramente atualizadas. 
 
 ## Segurança
+* Com REST, o ideal é usuar autenticação Stateless: servidor não guarda sessão (espaço de memória) p/ cada usuário logado e autenticado com cookies. 
+* A aplicação cliente deve ter uma página de login, que faz a chamada ao endpoint de autenticação da API.
 
 
 
