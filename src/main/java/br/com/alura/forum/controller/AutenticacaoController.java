@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.forum.config.security.TokenServico;
+import br.com.alura.forum.controller.dto.TokenDto;
 import br.com.alura.forum.controller.form.LoginForm;
 
 @RestController
@@ -30,7 +31,7 @@ public class AutenticacaoController {
 	
 	
 	@PostMapping
-	public ResponseEntity<?> autenticar (@RequestBody @Valid LoginForm form){
+	public ResponseEntity<TokenDto> autenticar (@RequestBody @Valid LoginForm form){
 		
 		//O método authenticate recebe um objeto  do tipo userNamePasswordAuthenticationToken.
 		UsernamePasswordAuthenticationToken dadosLogin = form.converter();
@@ -42,7 +43,12 @@ public class AutenticacaoController {
 			
 			String token = tokenService.gerarToken(authentication);	//Quero devolver o token. fazer a geração do token e guardá-lo em uma string. vou precisar identificar para qual usuário pertence aquele token.	
 			
-			return ResponseEntity.ok().build();
+			//devolver um 200 e levar esse token junto como resposta. No body da response, foi devolvido o token e o tipo. Esse token vai voltar para o cliente, responsável por guardar em algum lugar. Nas próximas requisições que ele disparar, ele vai ter que levar esse token a um cabeçalho autorization: responsável por cuidar da parte de autorização. Dizer no cabeçalho qual o tipo de autenticação.
+			return ResponseEntity.ok(new TokenDto(token, 
+					"Bearer")); //tipo de autenticação: como ele vai fazer a autenticação nas próximas requisições
+			
+			
+			
 			
 		} catch (AuthenticationException e) {//usuario e senha incorretos
 			return ResponseEntity.badRequest().build();//erro 400
