@@ -40,5 +40,21 @@ public class TokenServico {
 				.compact(); //compacta e transforma em String
 		
 	}
+
+
+	public boolean isTokenValido(String token) {
+		
+		try {
+			
+			Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token); //se nao validar, retorna exception
+			return true;
+		}
+		catch (Exception e) {
+			return false;
+		}
+		
+		
+		
+	}
 	
 }

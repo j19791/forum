@@ -7,9 +7,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.core.token.TokenService;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
+
+	private TokenServico tokenService;
+	
+	
+	//nao pode injetar o TokenServico pois AutenticacaoViaTokenFilter foi criada com new em SecurityConfigurations
+	public AutenticacaoViaTokenFilter(TokenServico tokenService) {
+		super();
+		this.tokenService = tokenService;
+	}
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -17,6 +27,10 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 		
 		
 		String token = recuperToken(request) ;
+		
+		boolean valido = tokenService.isTokenValido(token);
+		
+		System.out.println(valido);
 		
 		System.out.println(token);
 		
