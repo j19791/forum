@@ -111,6 +111,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ## Segurança
 * Com REST, o ideal é usuar autenticação Stateless: servidor não guarda sessão (espaço de memória) p/ cada usuário logado e autenticado com cookies. 
 * A aplicação cliente deve ter uma página de login, que faz a chamada ao endpoint de autenticação da API.
+* Autenticação Stateless: tokens JWT (Json Web Token)
+* Bearer é um dos mecanismos de autenticação utilizados no protocolo HTTP, tal como o Basic e o Digest.
 
 
 
