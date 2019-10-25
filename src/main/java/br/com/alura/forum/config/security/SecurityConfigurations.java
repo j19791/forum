@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity //habilita nessa aplicação o módulo de segurança - default - tudo bloqueado
 @Configuration //Spring configura a aplicação no startup a partir das definições dessas classes
@@ -41,7 +42,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated() //restrição (requer autenticação): Para indicar que outras URLs que não foram configuradas devem ter acesso restrito
 			//.and().formLogin(); //login fornecido agora é pela aplicação do liente
 			.and().csrf().disable() //desativa tratamento p/ ataque csrf
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//principio REST. Utilizar autenticação Stateless
+
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)//principio REST. Utilizar autenticação Stateless
+			.and().addFilterBefore(new AutenticacaoViaTokenFilter(), UsernamePasswordAuthenticationFilter.class);//registra no Spring o filtro que intercepta o token dos requests
 	}
 	
 	@Override
