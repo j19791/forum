@@ -11,10 +11,11 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import br.com.alura.forum.repository.UsuarioRepository;
 
 @EnableWebSecurity //habilita nessa aplicação o módulo de segurança - default - tudo bloqueado
 @Configuration //Spring configura a aplicação no startup a partir das definições dessas classes
@@ -26,6 +27,9 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private TokenServico tokenService;
+	
+	@Autowired
+	private UsuarioRepository repository;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {//configura a autenticação (login)
@@ -48,7 +52,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 			.and().csrf().disable() //desativa tratamento p/ ataque csrf
 
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)//principio REST. Utilizar autenticação Stateless
-			.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService), UsernamePasswordAuthenticationFilter.class);//registra no Spring o filtro que intercepta o token dos requests
+			.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, repository), UsernamePasswordAuthenticationFilter.class);//registra no Spring o filtro que intercepta o token dos requests
 	}
 	
 	@Override
