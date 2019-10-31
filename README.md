@@ -114,6 +114,8 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 * Autenticação Stateless: tokens JWT (Json Web Token)
 * Bearer é um dos mecanismos de autenticação utilizados no protocolo HTTP, tal como o Basic e o Digest.
 
-
-
+## Monitoramento
+* A equipe de operações da TI pode monitorar a aplicação se ela esta online, se caiu ou se esta apresentando erros, por exemplo.
+* Utilizar o Spring Boot Actuator
+* 
 

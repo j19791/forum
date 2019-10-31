@@ -68,7 +68,7 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 
 	public String recuperToken(HttpServletRequest request) {
 		
-		String token = request.getHeader("Authorization");
+		String token = request.getHeader("Authorization");//Para recuperar o token JWT, especificamente do cabeçalho da requisição no filter
 		
 		if (token == null || token.isEmpty() || !token.startsWith("Bearer ")) {			
 			return null;			

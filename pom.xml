@@ -57,6 +57,11 @@
 		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId><!-- actuator é habilitado (por padrão) logo quando é incluido uma dependencia  -->
+		</dependency>
+		
 		<dependency> <!-- Evitar a necessidade de reiniciar o servidor manualmente a cada mudança no código da aplicação -->
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

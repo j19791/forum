@@ -47,6 +47,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET, "/topicos").permitAll() //end points públicos: get da lista de tópicos e dos detalhes de um tópico
 			.antMatchers(HttpMethod.GET, "/topicos/*").permitAll() //end points públicos: get da lista de tópicos e dos detalhes de um tópico
 			.antMatchers(HttpMethod.POST,"/auth").permitAll() //liberar endpoint de autenticação			
+			.antMatchers(HttpMethod.GET, "/actuator/**").permitAll() //liberado aqui apenas p/ testes. Em produção deverá ser autorizado por apresentar info sensíveis
 			.anyRequest().authenticated() //restrição (requer autenticação): Para indicar que outras URLs que não foram configuradas devem ter acesso restrito
 			//.and().formLogin(); //login fornecido agora é pela aplicação do liente
 			.and().csrf().disable() //desativa tratamento p/ ataque csrf
