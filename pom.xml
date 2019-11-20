@@ -69,6 +69,18 @@
 		    <version>2.1.4</version>
 		</dependency>
 		
+		<dependency><!-- geração automatizada da documentação d api -->
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>2.9.2</version><!-- incluir versão pois não vem com SpringBoot -->
+		</dependency>
+		
+		<dependency><!-- geração da interface web da documentação -->
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>2.9.2</version>
+		</dependency>
+		
 		
 		<dependency> <!-- Evitar a necessidade de reiniciar o servidor manualmente a cada mudança no código da aplicação -->
 			<groupId>org.springframework.boot</groupId>
