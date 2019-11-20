@@ -117,5 +117,16 @@ Utilizando JPA, não se deve retornar todos os atributos de um,a entidade JPA. C
 ## Monitoramento
 * A equipe de operações da TI pode monitorar a aplicação se ela esta online, se caiu ou se esta apresentando erros, por exemplo.
 * Utilizar o Spring Boot Actuator
-* 
+
+## Documentação
+* API REST: outros desenvolvedores vão construir outras aplicações para consumir sua API
+* Disponibilizar endereço da API, os recursos, os métodos suportados
+* Swagger: ferramenta que automatiza a leitura dessa API e a geração de uma documentação
+* [swagger-ui](http://localhost:8080/swagger-ui.html) website gerado que explica como funciona a API, recursos, endereços, e até fazer testes diretamente para API
+* SpringFox: biblioteca que documenta API REST utilizando o Swagger. Incluir essa dependencia no pom.xml
+* springfox-swagger-ui: dependência que disponibiliza a documentação gerada automaticamente através de um site.
+* @EnableSwagger2: habilitação da geração de documentação no ForumApplication
+* SwaggerConfigurations: classe para configurar o swagger no seu projeto
+* Com Spring security configurado, liberar o endereço do Swagger para evitar o 403
+ 
 

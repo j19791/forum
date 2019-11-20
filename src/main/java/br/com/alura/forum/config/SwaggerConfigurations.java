@@ -24,14 +24,15 @@ public class SwaggerConfigurations {
                 .paths(PathSelectors.ant("/**")) //sem restrições de end points
                 .build()
                 .ignoredParameterTypes(Usuario.class) //protege de exibir senha do usuário, por exemplo
-                .globalOperationParameters(
+                //parâmetro global que o Swagger apresente em todos os endpoints.
+                .globalOperationParameters( //configurar um campo para conseguir digitar o cabeçalho do authorization e digitar o token.
                         Arrays.asList(
                                 new ParameterBuilder()
-                                    .name("Authorization")
-                                    .description("Header para Token JWT")
-                                    .modelRef(new ModelRef("string"))
-                                    .parameterType("header")
-                                    .required(false)
+                                    .name("Authorization") //nome do parametro
+                                    .description("Header para Token JWT") //descrição para aparecer no swagger-ui
+                                    .modelRef(new ModelRef("string")) //o token é um string
+                                    .parameterType("header") //tipo do parametro: cabeçalho
+                                    .required(false) //parametro Authorization é opcional: tem uri q não precisa dele
                                     .build()));
     }
 
